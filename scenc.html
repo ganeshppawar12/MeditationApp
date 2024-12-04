@@ -4,28 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Metrophobic&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
 
     <style>
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Manrope", sans-serif;
-        }
         h1{
             margin: 0 !important;
         }
-
-
-
         .modal {
             display: none; /* Hide the modal by default */
             position: fixed;
@@ -52,6 +40,9 @@
             font-size: 1.5rem;
         }
     </style>
+</head>
+<body>
+
     <nav class="shadow-lg">
         <div class="flex items-center justify-between py-4 px-12" style="background: #ffffff;">
             <h1 class="text-2xl font-semibold subpixel-antialiased"> <a href="index.html">FreeUP</a> </h1>
@@ -70,12 +61,12 @@
             </div>
         </div>
     </nav>
-
-    <div class="flex items-center justify-center">
-        <div  class="flex items-center justify-between w-4/5 gap-5" id="music"></div>
+    
+    <div class="flex items-center justify-center ">
+        <div class="flex items-center justify-between flex-wrap w-4/5 gap-3 p-2" id="music"></div>
     </div>
 
-    <!-- Modal -->
+    <!-- Custom Modal -->
     <div id="musicModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
@@ -95,43 +86,51 @@
         const meditationMusic = [
             {
                 id: 1,
-                title: "Calm Waves",
+                title: "Snow",
                 duration: "15:00",
-                description: "Relaxing sound of ocean waves to help you unwind.",
-                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-                thumbnail: "https://example.com/images/calm-waves.jpg"
+                description: "A serene snowy atmosphere with light winds.",
+                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",  // Replace with actual snow music URL
+                thumbnail: "https://example.com/images/snow.jpg"
             },
             {
                 id: 2,
-                title: "Peaceful Forest",
+                title: "Lake Sunset",
                 duration: "20:00",
-                description: "Bird songs and forest ambiance for deep relaxation.",
-                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-                thumbnail: "https://example.com/images/peaceful-forest.jpg"
+                description: "Gentle sounds of a calm lake during sunset.",
+                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",  // Replace with actual lake sunset music URL
+                thumbnail: "https://example.com/images/lake-sunset.jpg"
             },
             {
                 id: 3,
-                title: "Soothing Piano",
+                title: "River Forest",
                 duration: "10:00",
-                description: "Soft piano melodies for a serene meditation experience.",
-                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-                thumbnail: "https://example.com/images/soothing-piano.jpg"
+                description: "The soothing flow of a river through a forest.",
+                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",  // Replace with actual river forest music URL
+                thumbnail: "https://example.com/images/river-forest.jpg"
             },
             {
                 id: 4,
-                title: "Healing Frequencies",
+                title: "Rain",
                 duration: "25:00",
-                description: "A collection of healing frequencies for mental clarity.",
-                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-                thumbnail: "https://example.com/images/healing-frequencies.jpg"
+                description: "Relaxing sounds of a light rainstorm.",
+                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",  // Replace with actual rain music URL
+                thumbnail: "https://example.com/images/rain.jpg"
             },
             {
                 id: 5,
-                title: "Zen Garden",
+                title: "Mountain Lake",
                 duration: "30:00",
-                description: "Gentle wind chimes and water sounds for a peaceful meditation.",
-                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-                thumbnail: "https://example.com/images/zen-garden.jpg"
+                description: "The calming effect of a mountain lake surrounded by nature.",
+                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",  // Replace with actual mountain lake music URL
+                thumbnail: "https://example.com/images/mountain-lake.jpg"
+            },
+            {
+                id: 6,
+                title: "Waterfall",
+                duration: "20:00",
+                description: "A peaceful waterfall flowing through a forest.",
+                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",  // Replace with actual waterfall music URL
+                thumbnail: "https://example.com/images/waterfall.jpg"
             }
         ];
 
@@ -177,8 +176,5 @@
             musicPlayer.currentTime = 0; // Reset music to start
         }
     </script>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0br8jfHd4p8i0RrD/Jz33Ldfy8Fpt6Lq2JtZ7rp88VOeZm7N" crossorigin="anonymous"></script>
 </body>
 </html>
