@@ -49,7 +49,7 @@ MeditationExercize.map((value, index, array) => {
             <img src="${value.img}" class="card-img-top" alt="...">
             <div class="card-body">
             <p class="card-text">${value.title}</p>
-              <p class="card-text">HI</p>
+             
             </div>
             </a>
           </div>
