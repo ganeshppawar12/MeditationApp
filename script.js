@@ -44,12 +44,11 @@ MeditationExercize.map((value, index, array) => {
 
     mainContainerInnerHtml+= `
     
-    <div class="card" style="width: 18rem; cursor:pointer" onclick="showExcersize(${value.id})">
+    <div class="card" style="width: 22rem; cursor:pointer" onclick="showExcersize(${value.id})">
   <a href="${value.page}.html">
             <img src="${value.img}" class="card-img-top" alt="...">
             <div class="card-body">
             <p class="card-text">${value.title}</p>
-             
             </div>
             </a>
           </div>
