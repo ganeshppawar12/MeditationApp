@@ -57,31 +57,46 @@
       .userInput{
         display: none;
       }
+
+      @media screen and (max-width:600px) {
+    #navabar{
+        flex-direction: column;
+        align-items: start;
+        padding: 20px;
+        gap: 10px;
+    }
+    #navabar ul{
+        gap: 10px;
+        font-size: 12px;
+        flex-wrap: wrap;
+    }
+    
+}
     </style>
   </head>
 
   <body>
     <nav class="shadow-lg">
-      <div class="flex items-center justify-between py-4 px-12 bg-white">
-        <h1 class="text-2xl font-semibold subpixel-antialiased"> <a href="index.html">FreeUP</a> </h1>
-        <ul
-          class="flex items-center justify-between text-sm font-semibold uppercase"
-          style="flex: 0.4; color: #3a3a3a"
-        >
-        <li class="hover:text-sky-800"> <a href="meditation.html">Meditation</a> </li>
-        <li class="hover:text-green-700">  <a href="music.html">Music</a> </li>
-        <li class="hover:text-fuchsia-700"> <a href="scenc.html">Scene</a>  </li>
-        <li class="hover:text-pink-700"> <a href="">Happy Weekly</a></li>
-          <!-- <li class="hover:text-pink-700"><a href="#">Happy Weekly</a></li> -->
-        </ul>
-        <div>
-          <i class="fa-regular fa-user"></i>
-        </div>
+      <div id="navabar" class="flex items-center justify-between py-4 px-12  md:gap-5" style="background: #ffffff;">
+          <h1 class="text-2xl font-semibold subpixel-antialiased"> <a href="index.html">FreeUP</a> </h1>
+
+          <ul class="flex items-center justify-between text-sm font-semibold Class
+          Properties
+          uppercase sm:grow md:gap-5 whitespace-nowrap" style="flex: 0.4; color: #3A3A3A;">
+              <li class="hover:text-sky-800"> <a href="meditation.html">Meditation</a> </li>
+              <li class="hover:text-green-700">  <a href="music.html">Music</a> </li>
+              <li class="hover:text-fuchsia-700"> <a href="scenc.html">Scene</a>  </li>
+              <li class="hover:text-pink-700"> <a href="">Happy Weekly</a></li>
+          </ul>
+
+          <!-- <div>
+              <i class="fa-regular fa-user"></i>
+          </div> -->
       </div>
-    </nav>
+  </nav>
 
     <div class="flex items-center justify-center p-10">
-      <div id="cards" class="flex justify-between w-4/5"></div>
+      <div id="cards" class="flex justify-between w-4/5 flex-wrap gap-5"></div>
     </div>
 
     <div id="mainContainer" class="flex items-center justify-center flex-col">
@@ -97,18 +112,47 @@
       </div>
     </div>
 
-    <div class="userInput " id="userInput">
-        <label for="inhaleDuration">Inhale Duration (seconds):</label>
-        <input type="number" id="inhaleDuration" min="1" value="4">
-        
-        <label for="holdDuration">Hold Duration (seconds):</label>
-        <input type="number" id="holdDuration" min="1" value="4">
-        
-        <label for="exhaleDuration">Exhale Duration (seconds):</label>
-        <input type="number" id="exhaleDuration" min="1" value="4">
-        
-        <button onclick="startBreathingAnimation2()">Start Breathing</button>
-    </div>
+    <div class="max-w-md flex items-center justify-center m-auto p-6 bg-gray-100 rounded-lg shadow-lg">
+      <div class="space-y-4 md:flex items-center gap-5">
+          <div>
+              <label for="inhaleDuration" class="block text-sm font-medium text-gray-700 mb-1">Inhale Duration (seconds):</label>
+              <input
+                  type="number"
+                  id="inhaleDuration"
+                  min="1"
+                  value="4"
+                  class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              >
+          </div>
+          <div>
+              <label for="holdDuration" class="block text-sm font-medium text-gray-700 mb-1">Hold Duration (seconds):</label>
+              <input
+                  type="number"
+                  id="holdDuration"
+                  min="1"
+                  value="4"
+                  class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              >
+          </div>
+          <div>
+              <label for="exhaleDuration" class="block text-sm font-medium text-gray-700 mb-1">Exhale Duration (seconds):</label>
+              <input
+                  type="number"
+                  id="exhaleDuration"
+                  min="1"
+                  value="4"
+                  class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              >
+          </div>
+          <button
+              onclick="startBreathingAnimation2()"
+              class="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+              Start Breathing
+          </button>
+      </div>
+  </div>
+  
 
     <script>
       const breathingExcersize = [
