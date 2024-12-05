@@ -55,6 +55,9 @@
             background-color: rgb(38, 67, 255);
             border-radius: 50%;
         }
+        /* #canvas{
+            display: none;
+        } */
     </style>
 
 
@@ -79,8 +82,8 @@
 
     <div class="modals" id="modals">
         <i class="fa-solid fa-xmark text-white absolute right-2.5 top-2.5" onclick="stopFocus()" ></i>
-        <div id></div>
-        <div class="flex flex-col items-center justify-center gap-10 h-full"> 
+        
+        <div class="flex flex-col items-center justify-center gap-10 h-full "> 
 
             <div class="flex items-center flex-wrap gap-10 text-slate-700"> 
                 <p class="text-2xl font-semibold whitespace-nowrap">Timer</p>
@@ -88,7 +91,9 @@
             </div>
 
             <div>
-                <div id="FocusDot">
+             
+
+                <div class="mb-4" id="FocusDot">
                     
                 </div>
             </div>
@@ -96,6 +101,29 @@
 
     </div>
 
+
+
+
+
+    <div class="modals" id="modals2">
+        <i class="fa-solid fa-xmark text-white absolute right-2.5 top-2.5" onclick="stopFocus()" ></i>
+        
+        <div class="flex flex-col items-center justify-center gap-10 h-full"> 
+
+            <div class="flex items-center flex-wrap gap-10 text-slate-700"> 
+                <p class="text-2xl font-semibold whitespace-nowrap">Timer</p>
+                <p id="timer2" class="text-2xl font-semibold">10:00</p>
+            </div>
+
+            <div>
+                <div id="canvas">
+
+                    <canvas id="focusCanvas" class="border" width="500" height="500" style="border: 1px solid black;"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 
     <script>
@@ -146,12 +174,14 @@
 
   function showExcersize(id){
     if(id === 1) focusDot();
+    if(id === 2) focusOnMovingDot();
   }
   let startClock 
   function focusDot(){
 
 const modals = document.getElementById('modals').style.display = 'block';
 const timer = document.getElementById('timer');
+
  
   let minute = 0;
   let sec = 0;
@@ -162,7 +192,7 @@ const timer = document.getElementById('timer');
         sec = 0;
      }else if(minute == 10){
         alert("time Over");
-        clearInterval(startClock);
+        stopFocus()
      }else{
         sec++;
      }
@@ -173,8 +203,76 @@ const timer = document.getElementById('timer');
 
   }
 
+  function focusOnMovingDot(){
+const modals2 = document.getElementById('modals2').style.display = 'block';
+const timer = document.getElementById('timer2');
+
+
+    const canvas = document.getElementById("focusCanvas");
+    
+const ctx = canvas.getContext("2d");
+
+const dot = {
+    x: canvas.width / 2, // Start at the center
+    y: canvas.height / 2,
+    radius: 10,
+    speed: 2, // Speed of movement
+    dx: Math.random() * 4 - 2, // Random x-direction velocity
+    dy: Math.random() * 4 - 2  // Random y-direction velocity
+};
+
+function drawDot() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear previous frame
+    ctx.beginPath();
+    ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2); // Draw dot
+    ctx.fillStyle = "blue";
+    ctx.fill();
+    ctx.closePath();
+}
+
+function moveDot() {
+    dot.x += dot.dx;
+    dot.y += dot.dy;
+
+    // Check for collisions with canvas edges and reverse direction if necessary
+    if (dot.x + dot.radius > canvas.width || dot.x - dot.radius < 0) {
+        dot.dx = -dot.dx;
+    }
+    if (dot.y + dot.radius > canvas.height || dot.y - dot.radius < 0) {
+        dot.dy = -dot.dy;
+    }
+
+    drawDot(); // Redraw the dot in the new position
+    requestAnimationFrame(moveDot); // Continue the animation
+}
+
+let minute = 0;
+  let sec = 0;
+
+         startClock = setInterval(()=>{
+     if(sec == 59){
+        minute++;
+        sec = 0;
+     }else if(minute == 10){
+        alert("time Over");
+        stopFocus()
+     }else{
+        sec++;
+     }
+
+     timer.innerHTML = (minute < 10 ? '0'+minute: minute) + ':' + (sec < 10 ? '0'+sec : sec);
+
+        },1000)
+// Start the animation
+drawDot();
+moveDot();
+
+
+  }
+
   function stopFocus(){
 const modals = document.getElementById('modals').style.display = 'none';
+const modals2 = document.getElementById('modals2').style.display = 'none';
 clearInterval(startClock);
   }
 
