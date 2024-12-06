@@ -12,13 +12,9 @@
 
 
     <style>
-<<<<<<< HEAD
-       
-=======
         h1 {
             margin: 0 !important;
         }
->>>>>>> e74efa5d2c26555183fb60f54ae52ac8c5cdbe6b
         .modal {
             display: none;
             position: fixed;
@@ -48,9 +44,6 @@
         .card:hover{
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         }
-<<<<<<< HEAD
-      
-=======
         @media screen and (max-width: 600px) {
             #navabar {
                 flex-direction: column;
@@ -64,12 +57,9 @@
                 flex-wrap: wrap;
             }
         }
->>>>>>> e74efa5d2c26555183fb60f54ae52ac8c5cdbe6b
     </style>
 </head>
 <body>
-
-<<<<<<< HEAD
     <div id="navbar"></div>
 
     <script>
@@ -78,7 +68,8 @@
             .then(response => response.text())
             .then(data => {
                 document.getElementById('navbar').innerHTML = data;
-                const toggel = document.getElementById('toggel');
+
+
                 const toggler = document.getElementById('toggel');
         // console.log(toggel)
         let flag = localStorage.getItem('darkMode') === 'true';
@@ -96,28 +87,18 @@
                         toggler.style.transform = 'translateX(0px)';
                         document.body.classList.remove('dark-mode');
                     } else {
-                        toggler.style.transform = 'translateX(30px)';
+                        toggler.style.transform = 'translateX(25px)';
                         document.body.classList.add('dark-mode');
                     }
 
                     flag = !flag;
                     localStorage.setItem('darkMode', flag);
                 });
-            });
+                });
+
+           
+
     </script>
-=======
-    <nav class="shadow-lg">
-        <div id="navabar" class="flex items-center justify-between py-4 px-12 md:gap-5" style="background: #ffffff;">
-            <h1 class="text-2xl font-semibold subpixel-antialiased"> <a href="index.html">FreeUP</a> </h1>
-            <ul class="flex items-center justify-between text-sm font-semibold uppercase md:gap-5 whitespace-nowrap" style="flex: 0.4; color: #3A3A3A;">
-                <li class="hover:text-sky-800"> <a href="meditation.html">Meditation</a> </li>
-                <li class="hover:text-green-700"> <a href="music.html">Music</a> </li>
-                <li class="font-bold text-fuchsia-700"> <a href="scenc.html">Scene</a> </li>
-                <li class="hover:text-pink-700"> <a href="#">Happy Weekly</a> </li>
-            </ul>
-        </div>
-    </nav>
->>>>>>> e74efa5d2c26555183fb60f54ae52ac8c5cdbe6b
     
     <div class="flex items-center justify-center">
         <div class="flex items-center justify-between flex-wrap w-4/5 gap-3 p-2" id="music"></div>
