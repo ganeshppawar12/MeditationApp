@@ -10,55 +10,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Metrophobic&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<style>
-    *{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Manrope", sans-serif;
-    }
-    h1{
-        margin: 0 !important;
-    }
-    @media screen and (max-width:600px) {
-    #navabar{
-        flex-direction: column;
-        align-items: start;
-        padding: 20px;
-        gap: 10px;
-    }
-    #navabar ul{
-        gap: 10px;
-        font-size: 12px;
-        flex-wrap: wrap;
-    }
-    
-}
 
-</style>
+
 <body>
-    <nav class="shadow-lg">
-        <div id="navabar" class="flex items-center justify-between py-4 px-12  md:gap-5" style="background: #ffffff;">
-            <h1 class="text-2xl font-semibold subpixel-antialiased"> <a href="index.html">FreeUP</a> </h1>
+    <div id="navbar"></div>
 
-            <ul class="flex items-center justify-between text-sm font-semibold Class
-            Properties
-            uppercase sm:grow md:gap-5 whitespace-nowrap" style="flex: 0.4; color: #3A3A3A;">
-                <li class="hover:text-sky-800"> <a href="meditation.html">Meditation</a> </li>
-                <li class="hover:text-green-700">  <a href="music.html">Music</a> </li>
-                <li class="hover:text-fuchsia-700"> <a href="scenc.html">Scene</a>  </li>
-                <li class="hover:text-pink-700"> <a href="">Happy Weekly</a></li>
-            </ul>
-
-            <!-- <div>
-                <i class="fa-regular fa-user"></i>
-            </div> -->
-        </div>
-    </nav>
+    <script>
+        // Load navbar.html into the #navbar div
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar').innerHTML = data;
+            });
+    </script>
 
     <section class="flex flex-col items-center gap-y-6 p-10" style="background: linear-gradient( #ffcc00,  #e5be1f,  #e2c655,  #f8e186, #fff2bd);">
-        <h2 class="text-4xl font-semibold" style="color: #355b80;" >Inhale peace, exhale stress.</h2>
+        <h2 class="text-4xl font-semibold " style="color: #355b80;" >Inhale peace, exhale stress.</h2>
         <p class="text-xl font-medium " style="color: #3A3A3A;">app for sleep, meditation and relaxation</p>
         <div >
             <button  class="px-6 py-3 rounded-3xl" style="background-color: #4DB6AC; color: rgb(235, 239, 243);"><a href="meditation.html">Start</a></button>
@@ -66,24 +35,24 @@
     </section>
 
     <section class="text-center p-2 " style="background-color: #f6f5f5;">
-           <h1 class="text-4xl font-semibold" style="color: #355b80;">We're here to help you feel better.</h1>
+           <h1 class="text-4xl font-semibold p-12" style="color: #355b80;">We're here to help you feel better.</h1>
 
-           <div class="flex justify-between flex-wrap items-center p-10">
+           <div class="flex justify-between flex-wrap items-center p-10 w-4/5 m-auto">
 
-            <div class="flex items-start flex-col justify-between gap-y-1 w-64 border-solid border-2 border-indigo-900  p-2 rounded-2xl bg-white drop-shadow-md h-32">
-                <h2 class="text-xl font-semibold text-indigo-900">Medited</h2>
-                <p class="text-start text-sm">Mindfulness is the key to the present moment.</p>
-                 <a class="justify-self-end" href="">Learn More</a>
+            <div class="flex items-start flex-col justify-between gap-y-1 w-64 border-solid border-2 border-indigo-500  p-2 rounded-lg bg-white drop-shadow-md h-32">
+                <h2 class="text-xl font-semibold text-indigo-800">Medited</h2>
+                <p class="text-start text-sm text-gray-700">Mindfulness is the key to the present moment.</p>
+                 <a class="justify-self-end" href="meditation.html">Learn More <i class="fa-solid fa-arrow-right"></i></a>
             </div>
-            <div class="flex items-start flex-col justify-between gap-y-1 w-64 border-solid border-2 border-teal-800 p-2 rounded-2xl bg-white drop-shadow-md h-32">
+            <div class="flex items-start flex-col justify-between gap-y-1 w-64 border-solid border-2 border-teal-500 p-2 rounded-lg bg-white drop-shadow-md h-32">
                 <h2 class="text-xl font-semibold text-teal-800">Sleep more.</h2>
-                <p class="text-start text-sm">Sleep is the best meditation..</p>
-                 <a class="justify-self-end" href="">Learn More</a>
+                <p class="text-start text-sm text-gray-700">Sleep is the best meditation..</p>
+                 <a class="justify-self-end" href="music.html">Learn More <i class="fa-solid fa-arrow-right"></i></a>
             </div>
-            <div class="flex items-start flex-col justify-between gap-y-1 w-64 border-solid border-2 border-yellow-700 p-2 rounded-2xl bg-white drop-shadow-md h-32">
-                <h2 class="text-xl font-semibold text-yellow-700">yoga for self</h2>
-                <p class="text-start text-sm">Self-care is giving the world the best of you, instead of what's left of you.</p>
-                 <a href="">Learn More</a>
+            <div class="flex items-start flex-col justify-between gap-y-1 w-64 border-solid border-2 border-yellow-500 p-2 rounded-lg bg-white drop-shadow-md h-32">
+                <h2 class="text-xl font-semibold text-yellow-800">yoga for self</h2>
+                <p class="text-start text-sm text-gray-700">Self-care is giving the world the best of you, instead of what's left of you.</p>
+                 <a href="">Learn More <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
            </div>
