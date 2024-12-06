@@ -1,318 +1,3 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Metrophobic&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-
-</head>
-<body>
-
-    <style>
-       
-
-        .modals{
-            display: none;
-            position: absolute;
-            top: 0;
-            /* left: 50%; */
-            background-color: black;
-            width: 100%;
-            height: 100vh;
-        }
-        #FocusDot{
-            height: 50px;
-            width: 50px;
-            background-color: rgb(38, 67, 255);
-            border-radius: 50%;
-        }
-        #alertModal{
-            display: none;
-            transform: translateY(-20px);
-            transition: .5s ease-in;
-        }#loader{
-            display: none;
-            text-align: center;
-            /* width: 100%; */
-            position: absolute;
-            left: 50%;
-            top: 50%;
-        }
-        /* #canvas{
-            display: none;
-        } */
-    </style>
-
-
-
-
-
-<div id="navbar"></div>
-
-<script>
-    // Load navbar.html into the #navbar div
-    fetch('navbar.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('navbar').innerHTML = data;
-
-            const toggel = document.getElementById('toggel');
-            const toggler = document.getElementById('toggel');
-        // console.log(toggel)
-        let flag = localStorage.getItem('darkMode') === 'true';
-
-                if (flag) {
-                    document.body.classList.add('dark-mode');
-                    toggler.style.transform = 'translateX(30px)';
-                } else {
-                    
-                    toggler.style.transform = 'translateX(0px)';
-                }
-
-                toggler.addEventListener('click', () => {
-                    if (flag) {
-                        toggler.style.transform = 'translateX(0px)';
-                        document.body.classList.remove('dark-mode');
-                    } else {
-                        toggler.style.transform = 'translateX(30px)';
-                        document.body.classList.add('dark-mode');
-                    }
-
-                    flag = !flag;
-                    localStorage.setItem('darkMode', flag);
-                });
-        });
-</script>
-
-
-    <div class="spinner-border" role="status" id="loader" > 
-        <span class="visually-hidden">Loading...</span>
-      </div>
-
-    <main  class="flex items-center justify-center p-10">
-        <div id="dot" class="flex items-center justify-between w-4/5 flex-wrap"></div>
-    </main>
-
-    <div class="modals" id="modals">
-        <i class="fa-solid fa-xmark text-white absolute right-2.5 top-2.5" onclick="stopFocus()" ></i>
-        
-        <div class="flex flex-col items-center justify-center gap-10 h-full "> 
-            <h1 class="text-2xl font-semibold whitespace-nowrap text-slate-700 absolute top-10">Focus On Dot For 10 minute</h1>
-
-            <div class="flex items-center flex-wrap gap-10 text-slate-700 absolute top-2"> 
-                <p class="text-2xl font-semibold whitespace-nowrap ">Timer</p>
-                <p id="timer" class="text-2xl font-semibold">10:00</p>
-            </div>
-            <div class="alertModal bg-white rounded-xl absolute top-2" id="alertModal">
-                <p class="text-xl font-light text-gray-700 p-2" >Times UP</p>
-             </div>
-
-            <div>
-             
-
-                <div class="mb-4" id="FocusDot">
-                    
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-
-
-
-
-    <div class="modals" id="modals2">
-        <i class="fa-solid fa-xmark text-white absolute right-2.5 top-2.5" onclick="stopFocus()" ></i>
-        
-        <div class="flex flex-col items-center justify-center gap-10 h-full"> 
-
-            <div class="flex items-center flex-wrap gap-10 text-slate-700"> 
-                <p class="text-2xl font-semibold whitespace-nowrap">Timer</p>
-                <p id="timer2" class="text-2xl font-semibold">10:00</p>
-            </div>
-
-            <div>
-                <div id="canvas">
-
-                    <canvas id="focusCanvas" class="border" width="500" height="500" style="border: 1px solid black;"></canvas>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-
-    <script>
-    const loader = document.getElementById('loader');
-
-        const focusAttention = [
-
-        {
-            id : 1,
-            title : "Focus On Dot",
-            para : "Constranted on a point",
-            img: "https://plus.unsplash.com/premium_photo-1733342533441-c4309b51da17?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTI5fHxkb3R8ZW58MHx8MHx8fDA%3D"
-
-        },
-        {
-            id : 2,
-            title : "Focus On moving Dot",
-            para : "Constranted on a Moving point",
-            img:"https://plus.unsplash.com/premium_photo-1733342533441-c4309b51da17?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTI5fHxkb3R8ZW58MHx8MHx8fDA%3D"
-
-        },
-        ]
-
-        const dot = document.getElementById('dot');
-
-        let card = '';
-
-        focusAttention.map((value,index)=>{
-        loader.style.display = 'block';
-            card+=`
-            
-             <div class="card" style="width: 18rem; cursor:pointer" onclick="showExcersize(${value.id})">
-
-            <img src="${value.img}" class="card-img-top" alt="...">
-            <div class="card-body">
-            <p class="card-text">${value.title}</p>
-            </div>
-           
-          </div>
-            
-            `
-            
-        loader.style.display = 'none';
-        })
-
-        dot.innerHTML = card;
-
-
-
-  function showExcersize(id){
-    if(id === 1) focusDot();
-    if(id === 2) focusOnMovingDot();
-  }
-  let startClock 
-  function focusDot(){
-    loader.style.display = 'block'
-
-const modals = document.getElementById('modals').style.display = 'block';
-const timer = document.getElementById('timer');
-const alertModal = document.getElementById('alertModal');
-
-
- 
-  let minute = 0;
-  let sec = 0;
-
-         startClock = setInterval(()=>{
-     if(sec == 59){
-        minute++;
-        sec = 0;
-     }else if(minute == 1){
-        // alert("time Over");
-        alertModal.style.display = "block";
-        stopFocus()
-     }else{
-        sec++;
-     }
-
-     timer.innerHTML = (minute < 10 ? '0'+minute: minute) + ':' + (sec < 10 ? '0'+sec : sec);
-
-        },1000)
-
-            loader.style.display = 'none'
-
-  }
-
-  function focusOnMovingDot(){
-const modals2 = document.getElementById('modals2').style.display = 'block';
-const timer = document.getElementById('timer2');
-
-
-    const canvas = document.getElementById("focusCanvas");
-    
-const ctx = canvas.getContext("2d");
-
-const dot = {
-    x: canvas.width / 2, // Start at the center
-    y: canvas.height / 2,
-    radius: 10,
-    speed: 2, // Speed of movement
-    dx: Math.random() * 4 - 2, // Random x-direction velocity
-    dy: Math.random() * 4 - 2  // Random y-direction velocity
-};
-
-function drawDot() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear previous frame
-    ctx.beginPath();
-    ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2); // Draw dot
-    ctx.fillStyle = "blue";
-    ctx.fill();
-    ctx.closePath();
-}
-
-function moveDot() {
-    dot.x += dot.dx;
-    dot.y += dot.dy;
-
-    // Check for collisions with canvas edges and reverse direction if necessary
-    if (dot.x + dot.radius > canvas.width || dot.x - dot.radius < 0) {
-        dot.dx = -dot.dx;
-    }
-    if (dot.y + dot.radius > canvas.height || dot.y - dot.radius < 0) {
-        dot.dy = -dot.dy;
-    }
-
-    drawDot(); // Redraw the dot in the new position
-    requestAnimationFrame(moveDot); // Continue the animation
-}
-
-let minute = 0;
-  let sec = 0;
-
-         startClock = setInterval(()=>{
-     if(sec == 59){
-        minute++;
-        sec = 0;
-     }else if(minute == 10){
-        alert("time Over");
-        stopFocus()
-     }else{
-        sec++;
-     }
-
-     timer.innerHTML = (minute < 10 ? '0'+minute: minute) + ':' + (sec < 10 ? '0'+sec : sec);
-
-        },1000)
-// Start the animation
-drawDot();
-moveDot();
-
-
-  }
-
-  function stopFocus(){
-const modals = document.getElementById('modals').style.display = 'none';
-const modals2 = document.getElementById('modals2').style.display = 'none';
-const alertModal = document.getElementById('alertModal').display = 'none';
-clearInterval(startClock);
-  }
-
-    </script>
-
-    </body>
-=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -378,18 +63,45 @@ clearInterval(startClock);
 
 
 
+<div id="navbar"></div>
 
-    <nav class="shadow-lg">
-        <div id="navabar" class="flex items-center justify-between py-4 px-12 md:gap-5" style="background: #ffffff;">
-            <h1 class="text-2xl font-semibold subpixel-antialiased"> <a href="index.html">FreeUP</a> </h1>
-            <ul class="flex items-center justify-between text-sm font-semibold uppercase md:gap-5 whitespace-nowrap" style="flex: 0.4; color: #3A3A3A;">
-                <li class="hover:text-sky-800"> <a href="meditation.html">Meditation</a> </li>
-                <li class="hover:text-green-700"> <a href="music.html">Music</a> </li>
-                <li class="font-bold text-fuchsia-700"> <a href="scenc.html">Scene</a> </li>
-                <li class="hover:text-pink-700"> <a href="#">Happy Weekly</a> </li>
-            </ul>
-        </div>
-    </nav>
+<script>
+    // Load navbar.html into the #navbar div
+    fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar').innerHTML = data;
+
+
+            const toggler = document.getElementById('toggel');
+    // console.log(toggel)
+    let flag = localStorage.getItem('darkMode') === 'true';
+
+            if (flag) {
+                document.body.classList.add('dark-mode');
+                toggler.style.transform = 'translateX(30px)';
+            } else {
+                
+                toggler.style.transform = 'translateX(0px)';
+            }
+
+            toggler.addEventListener('click', () => {
+                if (flag) {
+                    toggler.style.transform = 'translateX(0px)';
+                    document.body.classList.remove('dark-mode');
+                } else {
+                    toggler.style.transform = 'translateX(25px)';
+                    document.body.classList.add('dark-mode');
+                }
+
+                flag = !flag;
+                localStorage.setItem('darkMode', flag);
+            });
+            });
+
+       
+
+</script>
 
     <main  class="flex items-center justify-center p-10">
         <div id="dot" class="flex items-center justify-between w-4/5"></div>
@@ -595,4 +307,3 @@ clearInterval(startClock);
     </script>
 
     </body>
->>>>>>> e74efa5d2c26555183fb60f54ae52ac8c5cdbe6b
