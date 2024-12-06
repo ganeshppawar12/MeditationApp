@@ -16,29 +16,7 @@
 </head>
 <body>
     <style>
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Manrope", sans-serif;
-        }
-        h1{
-            margin: 0 !important;
-        }
-        body{
-            height: 100vh;
-        }
-        @keyframes breathExc {
-    0% {
-        transform: scale(1); /* Start at normal size */
-    }
-    50% {
-        transform: scale(1.5); /* Expand to 1.5 times the size */
-    }
-    100% {
-        transform: scale(1); /* Back to normal size */
-    }
-}
+        
 
 #breath {
     animation-name: breathExc;
@@ -47,28 +25,50 @@
     animation-iteration-count: infinite; /* Repeat the animation forever */
 }
 
+
     </style>
-    <nav class="shadow-lg">
-        <div class="flex items-center justify-between py-4 px-12" style="background: #ffffff;">
-            <h1 class="text-2xl font-semibold subpixel-antialiased"> <a href="index.html">FreeUP</a> </h1>
+     <div id="navbar"></div>
 
-            <ul class="flex items-center justify-between text-sm font-semibold Class
-            Properties
-            uppercase" style="flex: 0.4; color: #3A3A3A;">
-                <li class="hover:text-sky-800"> <a href="meditation.html">Meditation</a> </li>
-                <li class="hover:text-green-700">  <a href="music.html">Music</a> </li>
-                <li class="hover:text-fuchsia-700"> <a href="scenc.html">Scene</a>  </li>
-                <li class="hover:text-pink-700"> <a href="">Happy Weekly</a></li>
-            </ul>
-
-            <div>
-                <i class="fa-regular fa-user"></i>
-            </div>
-        </div>
-    </nav>
-    <main  class="h-4/5">
-    <div class="flex items-center justify-center h-4/2">
-    <div id="mainContainer" class="flex items-center justify-between w-4/4 gap-5 p-6">
+     <script>
+         // Load navbar.html into the #navbar div
+         fetch('navbar.html')
+             .then(response => response.text())
+             .then(data => {
+                 document.getElementById('navbar').innerHTML = data;
+ 
+ 
+                 const toggler = document.getElementById('toggel');
+         // console.log(toggel)
+         let flag = localStorage.getItem('darkMode') === 'true';
+ 
+                 if (flag) {
+                     document.body.classList.add('dark-mode');
+                     toggler.style.transform = 'translateX(30px)';
+                 } else {
+                     
+                     toggler.style.transform = 'translateX(0px)';
+                 }
+ 
+                 toggler.addEventListener('click', () => {
+                     if (flag) {
+                         toggler.style.transform = 'translateX(0px)';
+                         document.body.classList.remove('dark-mode');
+                     } else {
+                         toggler.style.transform = 'translateX(25px)';
+                         document.body.classList.add('dark-mode');
+                     }
+ 
+                     flag = !flag;
+                     localStorage.setItem('darkMode', flag);
+                 });
+                 });
+ 
+            
+ 
+     </script>
+    <main  class="">
+    <div class="flex items-center justify-center">
+    <div id="mainContainer" class="flex items-center justify-between  w-4/4 gap-5 p-6 flex-wrap">
 
     </div>
     </div>
@@ -83,9 +83,9 @@
     </div>
 
 </main>
-    <footer class="p-2 w-full" style="background-color: #3A3A3A; position: absolute; bottom:0; ">
-        <p class="text-center text-white p-2 ">All rights Reserved by Ganesh</p>
-   </footer>
+<footer class="p-2 w-full" style="background-color: #3A3A3A; ">
+    <p class="text-center text-white p-2 ">All rights Reserved by Ganesh</p>
+</footer>
 
     <script src="script.js"></script>
 </body>

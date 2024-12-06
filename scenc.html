@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music</title>
+    <title>Music & Video</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
-    <!-- font -->
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
 
     <style>
-        h1{
+        h1 {
             margin: 0 !important;
         }
         .modal {
-            display: none; /* Hide the modal by default */
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
@@ -31,6 +32,7 @@
             border-radius: 8px;
             width: 80%;
             max-width: 600px;
+            text-align: center;
         }
         .close {
             position: absolute;
@@ -39,30 +41,66 @@
             cursor: pointer;
             font-size: 1.5rem;
         }
+        .card:hover{
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+        @media screen and (max-width: 600px) {
+            #navabar {
+                flex-direction: column;
+                align-items: start;
+                padding: 20px;
+                gap: 10px;
+            }
+            #navabar ul {
+                gap: 10px;
+                font-size: 12px;
+                flex-wrap: wrap;
+            }
+        }
     </style>
 </head>
 <body>
+    <div id="navbar"></div>
 
-    <nav class="shadow-lg">
-        <div class="flex items-center justify-between py-4 px-12" style="background: #ffffff;">
-            <h1 class="text-2xl font-semibold subpixel-antialiased"> <a href="index.html">FreeUP</a> </h1>
+    <script>
+        // Load navbar.html into the #navbar div
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar').innerHTML = data;
 
-            <ul class="flex items-center justify-between text-sm font-semibold Class
-            Properties
-            uppercase" style="flex: 0.4; color: #3A3A3A;">
-            <li class="hover:text-sky-800"> <a href="meditation.html">Meditation</a> </li>
-            <li class="hover:text-green-700">  <a href="music.html">Music</a> </li>
-            <li class="hover:text-fuchsia-700"> <a href="scenc.html">Scene</a>  </li>
-            <li class="hover:text-pink-700"> <a href="">Happy Weekly</a></li>
-            </ul>
 
-            <div>
-                <i class="fa-regular fa-user"></i>
-            </div>
-        </div>
-    </nav>
+                const toggler = document.getElementById('toggel');
+        // console.log(toggel)
+        let flag = localStorage.getItem('darkMode') === 'true';
+
+                if (flag) {
+                    document.body.classList.add('dark-mode');
+                    toggler.style.transform = 'translateX(30px)';
+                } else {
+                    
+                    toggler.style.transform = 'translateX(0px)';
+                }
+
+                toggler.addEventListener('click', () => {
+                    if (flag) {
+                        toggler.style.transform = 'translateX(0px)';
+                        document.body.classList.remove('dark-mode');
+                    } else {
+                        toggler.style.transform = 'translateX(25px)';
+                        document.body.classList.add('dark-mode');
+                    }
+
+                    flag = !flag;
+                    localStorage.setItem('darkMode', flag);
+                });
+                });
+
+           
+
+    </script>
     
-    <div class="flex items-center justify-center ">
+    <div class="flex items-center justify-center">
         <div class="flex items-center justify-between flex-wrap w-4/5 gap-3 p-2" id="music"></div>
     </div>
 
@@ -70,79 +108,69 @@
     <div id="musicModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="musicTitle">Music Title</h2>
-            <audio id="musicPlayer" controls>
-                <source id="musicSource" src="" type="audio/mp3">
+            <h2 id="mediaTitle">Title</h2>
+            <audio id="musicPlayer" loop  style="width: 100%; margin-bottom: 15px;">
+                <source id="musicSource"  src="" type="audio/mp3">
                 Your browser does not support the audio element.
             </audio>
+            <video id="videoPlayer" loop controls style="width: 100%; border-radius: 8px;">
+                <source id="videoSource" src="" type="video/mp4">
+                Your browser does not support the video element.
+            </video>
         </div>
     </div>
 
-    <footer class="p-2 w-full" style="background-color: #3A3A3A; position: absolute; bottom:0; ">
-        <p class="text-center text-white p-2 ">All rights Reserved by Ganesh</p>
-   </footer>
+    <footer class="p-2 w-full" style="background-color: #3A3A3A;">
+        <p class="text-center text-white p-2">All rights Reserved by Ganesh</p>
+    </footer>
 
     <script>
-        const meditationMusic = [
+        const meditationMedia = [
             {
                 id: 1,
-                title: "Snow",
-                duration: "15:00",
-                description: "A serene snowy atmosphere with light winds.",
-                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",  // Replace with actual snow music URL
-                thumbnail: "https://example.com/images/snow.jpg"
+                title: "Snow and Serenity",
+                audioUrl: "img/sound-of-falling-snow-211055.mp3",
+                videoUrl: "https://videos.pexels.com/video-files/854855/854855-sd_640_360_24fps.mp4",
+                thumbnail: "https://images.unsplash.com/photo-1468476775582-6bede20f356f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHNub3d8ZW58MHx8MHx8fDA%3D"
             },
             {
                 id: 2,
                 title: "Lake Sunset",
-                duration: "20:00",
-                description: "Gentle sounds of a calm lake during sunset.",
-                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",  // Replace with actual lake sunset music URL
-                thumbnail: "https://example.com/images/lake-sunset.jpg"
+                audioUrl: "img/sunset-walk-54956.mp3",
+                videoUrl: "https://videos.pexels.com/video-files/18317564/18317564-sd_640_360_30fps.mp4",
+                thumbnail: "https://images.unsplash.com/photo-1595368246398-ad3593bd8996?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGxha2UlMjBzdW5zZXR8ZW58MHx8MHx8fDA%3D"
             },
             {
                 id: 3,
-                title: "River Forest",
-                duration: "10:00",
-                description: "The soothing flow of a river through a forest.",
-                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",  // Replace with actual river forest music URL
-                thumbnail: "https://example.com/images/river-forest.jpg"
+                title: "Rain",
+                audioUrl: "img/light-rain-109591.mp3",
+                videoUrl: "https://videos.pexels.com/video-files/4828773/4828773-sd_640_360_25fps.mp4",
+                thumbnail: "https://images.unsplash.com/photo-1498675090580-573f245af39f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nzl8fHJhaW58ZW58MHx8MHx8fDA%3D"
             },
             {
                 id: 4,
-                title: "Rain",
-                duration: "25:00",
-                description: "Relaxing sounds of a light rainstorm.",
-                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",  // Replace with actual rain music URL
-                thumbnail: "https://example.com/images/rain.jpg"
+                title: "WaterFall",
+                audioUrl: "img/birds-and-waterfall-250309.mp3",
+                videoUrl: "https://videos.pexels.com/video-files/2098988/2098988-sd_640_360_30fps.mp4",
+                thumbnail: "https://images.unsplash.com/photo-1433878455169-4698e60005b1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fFdhdGVyRmFsbHxlbnwwfHwwfHx8MA%3D%3D"
             },
             {
                 id: 5,
-                title: "Mountain Lake",
-                duration: "30:00",
-                description: "The calming effect of a mountain lake surrounded by nature.",
-                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",  // Replace with actual mountain lake music URL
-                thumbnail: "https://example.com/images/mountain-lake.jpg"
-            },
-            {
-                id: 6,
-                title: "Waterfall",
-                duration: "20:00",
-                description: "A peaceful waterfall flowing through a forest.",
-                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",  // Replace with actual waterfall music URL
-                thumbnail: "https://example.com/images/waterfall.jpg"
+                title: "Mountain",
+                audioUrl: "img/avala-trail-forest-nature-246779.mp3",
+                videoUrl: "https://videos.pexels.com/video-files/2941521/2941521-sd_640_360_24fps.mp4",
+                thumbnail: "https://plus.unsplash.com/premium_photo-1673240367277-e1d394465b56?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8TW91bnRhaW58ZW58MHx8MHx8fDA%3D"
             }
         ];
 
         const music = document.getElementById('music');
         let musicHtml = '';
-        meditationMusic.forEach(value => {
+        meditationMedia.forEach(value => {
             musicHtml += `
-            <div class="card" style="width: 18rem; cursor:pointer" onclick="openModal(${value.id})">
-                <img src="${value.thumbnail}" class="card-img-top" alt="...">
+            <div class="card" style="width: 20rem; cursor: pointer; overflow:hidden" onclick="openModal(${value.id})">
+                <img src="${value.thumbnail}" class="card-img-top" alt="${value.title}" >
                 <div class="card-body">
-                    <p class="card-text">${value.title}</p>
-                    <p class="card-text">${value.description}</p>
+                    <p class="card-text font-bold">${value.title}</p>
                 </div>
             </div>
             `;
@@ -150,30 +178,42 @@
 
         music.innerHTML = musicHtml;
 
-        // Open Modal Function
         function openModal(id) {
-            const musicItem = meditationMusic.find(item => item.id === id);
+            const mediaItem = meditationMedia.find(item => item.id === id);
             const musicModal = document.getElementById("musicModal");
-            const musicTitle = document.getElementById("musicTitle");
+            const mediaTitle = document.getElementById("mediaTitle");
             const musicPlayer = document.getElementById("musicPlayer");
+            const videoPlayer = document.getElementById("videoPlayer");
             const musicSource = document.getElementById("musicSource");
+            const videoSource = document.getElementById("videoSource");
 
-            // Set the title, URL and description dynamically
-            musicTitle.textContent = musicItem.title;
-            musicSource.src = musicItem.url;
-            musicPlayer.load(); // Refresh audio source
-            musicModal.style.display = "flex"; // Show the modal
-            musicPlayer.play(); // Start playing music
+            
+            mediaTitle.textContent = mediaItem.title;
+            musicSource.src = mediaItem.audioUrl || "";
+            videoSource.src = mediaItem.videoUrl || "";
+
+            musicPlayer.load();
+            videoPlayer.load();
+            if (mediaItem.audioUrl) musicPlayer.play();
+            if (mediaItem.videoUrl) videoPlayer.play();
+
+            // Show the modal
+            musicModal.style.display = "flex";
         }
 
         // Close Modal Function
         function closeModal() {
             const musicModal = document.getElementById("musicModal");
             const musicPlayer = document.getElementById("musicPlayer");
+            const videoPlayer = document.getElementById("videoPlayer");
 
-            musicModal.style.display = "none"; // Hide the modal
-            musicPlayer.pause(); // Pause the music
-            musicPlayer.currentTime = 0; // Reset music to start
+            // Stop both media
+            musicPlayer.pause();
+            videoPlayer.pause();
+            musicPlayer.currentTime = 0;
+            videoPlayer.currentTime = 0;
+
+            musicModal.style.display = "none";
         }
     </script>
 </body>

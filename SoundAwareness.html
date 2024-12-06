@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Metrophobic&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+  
+<body>
+    <div id="navbar"></div>
+
+    <script>
+        // Load navbar.html into the #navbar div
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar').innerHTML = data;
+
+
+                const toggler = document.getElementById('toggel');
+        // console.log(toggel)
+        let flag = localStorage.getItem('darkMode') === 'true';
+
+                if (flag) {
+                    document.body.classList.add('dark-mode');
+                    toggler.style.transform = 'translateX(30px)';
+                } else {
+                    
+                    toggler.style.transform = 'translateX(0px)';
+                }
+
+                toggler.addEventListener('click', () => {
+                    if (flag) {
+                        toggler.style.transform = 'translateX(0px)';
+                        document.body.classList.remove('dark-mode');
+                    } else {
+                        toggler.style.transform = 'translateX(25px)';
+                        document.body.classList.add('dark-mode');
+                    }
+
+                    flag = !flag;
+                    localStorage.setItem('darkMode', flag);
+                });
+                });
+
+           
+
+    </script>
+
+
+    <h1 class="text-center">Page Not Found ! </h1>
+    <p class="text-center text-gray-700">Page is Moved Developer.</p>
+    <div class="text-center" >
+
+        <a  href="index.html">GO back To Home Screen</a>
+    </div>
+    
+</body>
+</html>
