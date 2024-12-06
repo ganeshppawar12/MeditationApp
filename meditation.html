@@ -12,13 +12,42 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Metrophobic&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<<<<<<< HEAD
     <link rel="stylesheet" href="style.css">
 
+=======
+>>>>>>> e74efa5d2c26555183fb60f54ae52ac8c5cdbe6b
 
 </head>
 <body>
     <style>
+<<<<<<< HEAD
         
+=======
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Manrope", sans-serif;
+        }
+        h1{
+            margin: 0 !important;
+        }
+        body{
+            height: 100vh;
+        }
+        @keyframes breathExc {
+    0% {
+        transform: scale(1); /* Start at normal size */
+    }
+    50% {
+        transform: scale(1.5); /* Expand to 1.5 times the size */
+    }
+    100% {
+        transform: scale(1); /* Back to normal size */
+    }
+}
+>>>>>>> e74efa5d2c26555183fb60f54ae52ac8c5cdbe6b
 
 #breath {
     animation-name: breathExc;
@@ -26,6 +55,7 @@
     animation-timing-function: ease-in-out; /* Smooth transition */
     animation-iteration-count: infinite; /* Repeat the animation forever */
 }
+<<<<<<< HEAD
 #loader{
             display: none;
             text-align: center;
@@ -80,6 +110,42 @@
         <span class="visually-hidden">Loading...</span>
       </div>
 
+=======
+@media screen and (max-width:600px) {
+    #navabar{
+        flex-direction: column;
+        align-items: start;
+        padding: 20px;
+        gap: 10px;
+    }
+    #navabar ul{
+        gap: 10px;
+        font-size: 12px;
+        flex-wrap: wrap;
+    }
+    
+}
+
+    </style>
+    <nav class="shadow-lg">
+        <div id="navabar" class="flex items-center justify-between py-4 px-12  md:gap-5" style="background: #ffffff;">
+            <h1 class="text-2xl font-semibold subpixel-antialiased"> <a href="index.html">FreeUP</a> </h1>
+
+            <ul class="flex items-center justify-between text-sm font-semibold Class
+            Properties
+            uppercase sm:grow md:gap-5 whitespace-nowrap" style="flex: 0.4; color: #3A3A3A;">
+                <li class="hover:text-sky-800"> <a href="meditation.html">Meditation</a> </li>
+                <li class="hover:text-green-700">  <a href="music.html">Music</a> </li>
+                <li class="hover:text-fuchsia-700"> <a href="scenc.html">Scene</a>  </li>
+                <li class="hover:text-pink-700"> <a href="">Happy Weekly</a></li>
+            </ul>
+
+            <!-- <div>
+                <i class="fa-regular fa-user"></i>
+            </div> -->
+        </div>
+    </nav>
+>>>>>>> e74efa5d2c26555183fb60f54ae52ac8c5cdbe6b
     <main  class="">
     <div class="flex items-center justify-center">
     <div id="mainContainer" class="flex items-center justify-between  w-4/4 gap-5 p-6 flex-wrap">
@@ -103,4 +169,8 @@
 
     <script src="script.js"></script>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> e74efa5d2c26555183fb60f54ae52ac8c5cdbe6b

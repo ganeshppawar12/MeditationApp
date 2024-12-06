@@ -1,7 +1,10 @@
 const mainContainer = document.getElementById('mainContainer');
 const excersize = document.getElementById('excersize');
+<<<<<<< HEAD
 const loader = document.getElementById('loader');
 
+=======
+>>>>>>> e74efa5d2c26555183fb60f54ae52ac8c5cdbe6b
 const MeditationExercize = [
 
 {
@@ -43,6 +46,7 @@ const MeditationExercize = [
 let mainContainerInnerHtml = " ";
 
 MeditationExercize.map((value, index, array) => {
+<<<<<<< HEAD
     loader.style.display = 'block';
 
     mainContainerInnerHtml+= `
@@ -50,6 +54,14 @@ MeditationExercize.map((value, index, array) => {
     <div class="card" style="width: 20rem; cursor:pointer" onclick="showExcersize(${value.id})">
   <a href="${value.page}.html">
             <img src="${value.img}" loading="lazy" class="card-img-top" alt="...">
+=======
+
+    mainContainerInnerHtml+= `
+    
+    <div class="card" style="width: 22rem; cursor:pointer" onclick="showExcersize(${value.id})">
+  <a href="${value.page}.html">
+            <img src="${value.img}" class="card-img-top" alt="...">
+>>>>>>> e74efa5d2c26555183fb60f54ae52ac8c5cdbe6b
             <div class="card-body">
             <p class="card-text">${value.title}</p>
             </div>
@@ -58,9 +70,12 @@ MeditationExercize.map((value, index, array) => {
     
     `
 
+<<<<<<< HEAD
    
     loader.style.display = 'none';
 
+=======
+>>>>>>> e74efa5d2c26555183fb60f54ae52ac8c5cdbe6b
 
 })
 
@@ -78,4 +93,8 @@ mainContainer.innerHTML = mainContainerInnerHtml;
 //     `
     
 //     ;
+<<<<<<< HEAD
 // }
+=======
+// }
+>>>>>>> e74efa5d2c26555183fb60f54ae52ac8c5cdbe6b
